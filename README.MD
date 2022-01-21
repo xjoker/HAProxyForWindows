@@ -13,3 +13,4 @@ Build using Cygwin64
 * 2.5-dev8
 * 2.5-dev9
 * 2.5.0
+* 2.5.1
