@@ -26,3 +26,4 @@ Build using Cygwin64
 * 2.5.4
 * 2.5.5
 * 2.6-dev1
+* 2.6-dev5
