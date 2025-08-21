@@ -1,30 +1,67 @@
-# HAProxy For Windows
-Build using Cygwin64
+# HAProxy for Windows
 
-# Available Version
-* 2.4.1
-* 2.4.3
-* 2.4.4
-* 2.4.5
-* 2.4.6
-* 2.4.7
-* 2.4.8
-* 2.4.9
-* 2.4.10
-* 2.4.11
-* 2.4.12
-* 2.4.13
-* 2.4.14
-* 2.4.15
-* 2.5-dev5
-* 2.5-dev8
-* 2.5-dev9
-* 2.5.0
-* 2.5.1
-* 2.5.2
-* 2.5.3
-* 2.5.4
-* 2.5.5
-* 2.5.6
-* 2.6-dev1
-* 2.6-dev5
+Automated Windows builds of HAProxy using Cygwin.
+
+## Download
+
+Get the latest release from [Releases](https://github.com/xjoker/HAProxyForWindows/releases).
+
+- **haproxy-X.X.X-win64.zip** - Full package with all DLLs
+- **haproxy-X.X.X-win64-nolib.zip** - Executable only (requires Cygwin)
+
+## Quick Start
+
+1.  **Extract**: Download and extract `haproxy-X.X.X-win64.zip`.
+
+2.  **Create Config**: Create a file named `haproxy.cfg` in the same directory and paste the following content into it:
+
+    ```cfg
+    global
+        maxconn 4096
+
+    defaults
+        mode http
+        timeout connect 5s
+        timeout client 50s
+        timeout server 50s
+
+    frontend web
+        bind *:80
+        default_backend servers
+
+    backend servers
+        server s1 127.0.0.1:8080 check
+    ```
+
+3.  **Run**: Open your terminal in the same directory and run:
+
+    ```bash
+    haproxy.exe -f haproxy.cfg
+    ```
+
+## Build Features
+
+These builds typically include the following features:
+
+- OpenSSL 3.x
+- PCRE2 with JIT
+- Zlib compression
+- Multi-threading
+- Lua 5.3
+- Prometheus exporter
+
+> **Note**: Each release may be built with a different Cygwin toolchain, so the included DLLs and specific features might vary. Please refer to the `README.md` file included with each release for the most accurate information.
+
+## Requirements
+
+- Windows 7/Server 2008 R2 or later (64-bit)
+- No dependencies needed (full package)
+
+## Build Status
+
+Weekly automated builds from official HAProxy sources.
+
+## License
+
+HAProxy: GPLv2  
+Build scripts: MIT
