@@ -1,67 +1,62 @@
-# HAProxy for Windows
+# HAProxy for Windows (Cygwin builds)
 
-Automated Windows builds of HAProxy using Cygwin.
+[![Latest Release](https://img.shields.io/github/v/release/xjoker/HAProxyForWindows?display_name=release)](https://github.com/xjoker/HAProxyForWindows/releases)
+[![Downloads](https://img.shields.io/github/downloads/xjoker/HAProxyForWindows/total)](https://github.com/xjoker/HAProxyForWindows/releases)
+![Windows x64](https://img.shields.io/badge/Windows-x64-blue)
+![Cygwin](https://img.shields.io/badge/Built%20with-Cygwin-1f9f3f)
+
+Automated **Windows x64** builds of [HAProxy](https://www.haproxy.org/) using **Cygwin**.  
+Binaries include **OpenSSL 3.x**, **PCRE2 JIT**, **zlib**, **multi-threading**, **Lua 5.3**, and the **built-in Prometheus exporter**.
+
+> ⚠️ Note: HAProxy is primarily designed for Unix/Unix-like systems. These Windows builds target **development/testing** scenarios on Windows; for production, prefer Linux/BSD.
+
+---
+
+## Table of Contents
+
+- [Download](#download)
+- [Which version should I choose?](#which-version-should-i-choose)
+- [Run as a Windows Service (NSSM)](#run-as-a-windows-service-nssm)
+
+---
 
 ## Download
 
-Get the latest release from [Releases](https://github.com/xjoker/HAProxyForWindows/releases).
+Get the latest binaries from **[Releases](https://github.com/xjoker/HAProxyForWindows/releases)**.
 
-- **haproxy-X.X.X-win64.zip** - Full package with all DLLs
-- **haproxy-X.X.X-win64-nolib.zip** - Executable only (requires Cygwin)
+- `haproxy-<ver>-win64.zip` – **Full package**, includes required DLLs. *(recommended)*
+- `haproxy-<ver>-win64-nolib.zip` – **Executable only** (requires Cygwin runtime installed system-wide).
 
-## Quick Start
+Each release page includes the **`haproxy -vv`** build info and options.
 
-1.  **Extract**: Download and extract `haproxy-X.X.X-win64.zip`.
+---
 
-2.  **Create Config**: Create a file named `haproxy.cfg` in the same directory and paste the following content into it:
+## Which version should I choose?
 
-    ```cfg
-    global
-        maxconn 4096
+| Branch | Status / EOL (from upstream notes) | Recommended for |
+|---|---|---|
+| **3.2.x** | **LTS** – fixes until ~**Q2 2030** | Long-term stability on Windows |
+| **3.1.x** | Stable – fixes until ~**Q1 2026** | Latest stable features |
+| **2.8.x** | **LTS** – fixes until ~**Q2 2028** | Mature LTS |
+| **2.6.x** | **LTS** – fixes until ~**Q2 2027** | Legacy LTS (only if you must) |
+| **2.9.x** | **EOL** – upgrade to 3.x | Avoid for new installs |
+| **2.7.x / 2.5.x** | **EOL** | Do not use |
 
-    defaults
-        mode http
-        timeout connect 5s
-        timeout client 50s
-        timeout server 50s
+> See the corresponding release notes for exact status per tag.
 
-    frontend web
-        bind *:80
-        default_backend servers
+---
 
-    backend servers
-        server s1 127.0.0.1:8080 check
-    ```
+## Run as a Windows Service (NSSM)
 
-3.  **Run**: Open your terminal in the same directory and run:
+If you want HAProxy to start at boot and run headless, use **NSSM**:
 
-    ```bash
-    haproxy.exe -f haproxy.cfg
-    ```
+```powershell
+# Run PowerShell/CMD as Administrator
+nssm install haproxy "C:\haproxy\haproxy.exe" "-f C:\haproxy\haproxy.cfg"
+nssm set haproxy AppExit Default Restart
+nssm start haproxy
+```
 
-## Build Features
+> Alternative: Task Scheduler can also start HAProxy at boot if you prefer no third-party tools.
 
-These builds typically include the following features:
-
-- OpenSSL 3.x
-- PCRE2 with JIT
-- Zlib compression
-- Multi-threading
-- Lua 5.3
-- Prometheus exporter
-
-> **Note**: Each release may be built with a different Cygwin toolchain, so the included DLLs and specific features might vary. Please refer to the `README.md` file included with each release for the most accurate information.
-
-## Requirements
-
-- Windows 7/Server 2008 R2 or later (64-bit)
-- No dependencies needed (full package)
-
-## Build Status
-
-Weekly automated builds from official HAProxy sources.
-
-## License
-
-HAProxy: GPLv2  
-Build scripts: MIT
+---
