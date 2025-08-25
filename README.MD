@@ -1,6 +1,6 @@
 # HAProxy for Windows (Cygwin builds)
 
-[![Latest Release](https://img.shields.io/github/v/release/xjoker/HAProxyForWindows?display_name=release)](https://github.com/xjoker/HAProxyForWindows/releases)
+[![Latest Release](https://img.shields.io/github/v/release/xjoker/HAProxyForWindows?display_name=tag&sort=semver)](https://github.com/xjoker/HAProxyForWindows/releases)
 [![Downloads](https://img.shields.io/github/downloads/xjoker/HAProxyForWindows/total)](https://github.com/xjoker/HAProxyForWindows/releases)
 ![Windows x64](https://img.shields.io/badge/Windows-x64-blue)
 ![Cygwin](https://img.shields.io/badge/Built%20with-Cygwin-1f9f3f)
