@@ -46,7 +46,7 @@ Each release page includes the **`haproxy -vv`** build info and options.
 
 
 | Version | OPENSSL | PCRE | PCRE2 | PCRE2 JIT | Lua | Zlib | Prometheus (PROMEX) | TPROXY | SLZ |
-|---|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|
 | v3.2.x | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✖ |
 | v3.1.x | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✖ |
 | v2.9.x | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✖ |
