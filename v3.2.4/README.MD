@@ -35,7 +35,7 @@ SSL library supports : SSLv3 TLSv1.0 TLSv1.1 TLSv1.2 TLSv1.3
 OpenSSL providers loaded : default
 Built with Lua version : Lua 5.3.6
 Built with the Prometheus exporter as a service
-Built with zlib version : 1.2.13
+Built with zlib version : 1.3.1
 Running on zlib version : 1.3.1
 Compression algorithms supported : identity("identity"), deflate("deflate"), raw-deflate("deflate"), gzip("gzip")
 Built with transparent proxy support using:
