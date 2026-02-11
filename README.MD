@@ -5,6 +5,8 @@
 ![Windows x64](https://img.shields.io/badge/Windows-x64-blue)
 ![Cygwin](https://img.shields.io/badge/Built%20with-Cygwin-1f9f3f)
 
+**[中文文档](README_CN.md)** | English
+
 Automated **Windows x64** builds of [HAProxy](https://www.haproxy.org/) using **Cygwin**.
 
 All maintained upstream branches (LTS + Stable + Dev) are built daily. Each binary includes **OpenSSL 3.x**, **PCRE2 JIT**, **zlib**, **Lua 5.4**, **multi-threading**, **DNS resolution**, and the **built-in Prometheus exporter**.
